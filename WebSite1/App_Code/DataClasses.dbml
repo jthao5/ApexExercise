@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="AdventureWorks2016" Class="DataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=JTSERVER\JTSSQL;Initial Catalog=AdventureWorks2016;Persist Security Info=True;User ID=JTSandBox" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="AdventureWorks2016ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.viewApex" Member="viewApexes">
+    <Type Name="viewApex">
+      <Column Name="[Sold At]" Member="Sold_At" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="[Sold To]" Member="Sold_To" Type="System.String" DbType="NVarChar(101) NOT NULL" CanBeNull="false" />
+      <Column Name="[Account Number]" Member="Account_Number" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="[Invoice #]" Member="Invoice__" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="[Customer PO #]" Member="Customer_PO__" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="[Order Date]" Member="Order_Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="OrderDateText" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="DueDateText" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="[Due Date]" Member="Due_Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="[Invoice Total]" Member="Invoice_Total" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>
