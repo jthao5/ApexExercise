@@ -18,41 +18,162 @@ public partial class _Default : System.Web.UI.Page
     {
         if (!Page.IsPostBack)
         {
+            DateTime beginDate = new DateTime();
+            DateTime endDate = new DateTime();
+
+            if (DateTime.Now.AddMonths(-1).Month == 12)
+            {
+                DateTime lM1Date;
+                lM1Date = new DateTime(DateTime.Now.Year - 1, 12, 1);
+                Calendar1.SelectedDate = lM1Date;
+                Calendar1.VisibleDate = DateTime.Now.AddMonths(-1);
+                beginDate = Calendar1.SelectedDate;
+            }
+            else
             //Sets the default begin date (the first date of last month) and the end date (the last date of the last month) on the initial page load
-            DateTime lM1Date;
-            lM1Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month - 1, 1);
+            {
+                DateTime lM1Date;
+                lM1Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month - 1, 1);
+                Calendar1.SelectedDate = lM1Date;
+                Calendar1.VisibleDate = DateTime.Now.AddMonths(-1);
+                beginDate = Calendar1.SelectedDate;
+            }
+            
+            if (DateTime.Now.AddMonths(-1).Month == 12)
+            {
+                DateTime llMDate;
+                llMDate = new DateTime(DateTime.Now.Year - 1, 12, DateTime.DaysInMonth(DateTime.Now.Year - 1, 12));
+                Calendar2.SelectedDate = llMDate;
+                Calendar2.VisibleDate = DateTime.Now.AddMonths(-1);
+                endDate = Calendar2.SelectedDate;
+            }
+             else
+            {
+                DateTime llMDate;
+                llMDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month - 1, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month - 1));
+                Calendar2.SelectedDate = llMDate;
+                Calendar2.VisibleDate = DateTime.Now.AddMonths(-1);
+                endDate = Calendar2.SelectedDate;
+            }
+            
+            Label5.Text = "Range is: " + beginDate.ToShortDateString() + " to " + endDate.ToShortDateString();
 
-            Calendar1.SelectedDate = lM1Date;
-            Calendar1.VisibleDate = DateTime.Now.AddMonths(-1);
-
-            DateTime llMDate;
-            llMDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month - 1, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month - 1));
-
-            Calendar2.SelectedDate = llMDate;
-            Calendar2.VisibleDate = DateTime.Now.AddMonths(-1);
-            Label5.Text = "Range is: " + Calendar1.SelectedDate.ToShortDateString() + " to " + Calendar2.SelectedDate.ToShortDateString();
         }
     }
+
+
 
     protected void Calendar1_SelectionChanged(object sender, EventArgs e)
     {
         //Notifies user of date range being changed
-        Label5.Text = "Range is: " + Calendar1.SelectedDate.ToShortDateString() + " to " + Calendar2.SelectedDate.ToShortDateString();
+        DateTime beginDate = new DateTime();
+        DateTime endDate = new DateTime();
+        if (Calendar1.SelectedDate.Month == 1)
+        {
+            DateTime lM1Date;
+            lM1Date = new DateTime(Calendar1.SelectedDate.Year - 1, 12, 1);
+            beginDate = lM1Date;
+        }
+        else
+
+        {
+            DateTime lM1Date;
+            lM1Date = new DateTime(Calendar1.SelectedDate.Year, Calendar1.SelectedDate.Month - 1, 1);
+            beginDate = lM1Date;
+        }
+
+
+        if (Calendar2.SelectedDate.Month == 1)
+        {
+            DateTime llMDate;
+            llMDate = new DateTime(Calendar1.SelectedDate.Year - 1, 12, DateTime.DaysInMonth(DateTime.Now.Year - 1, 12));
+            endDate = llMDate;
+        }
+        else
+        {
+            DateTime llMDate;
+            llMDate = new DateTime(Calendar2.SelectedDate.Year, Calendar2.SelectedDate.Month, DateTime.DaysInMonth(Calendar2.SelectedDate.Year, Calendar2.SelectedDate.Month));
+            endDate = llMDate;
+        }
+
+
+        Label5.Text = "Range is: " + beginDate.ToShortDateString() + " to " + endDate.ToShortDateString();
     }
 
     protected void Calendar2_SelectionChanged(object sender, EventArgs e)
-    {
+    {        
         //Notifies user of date range being changed
-        Label5.Text = "Range is: " + Calendar1.SelectedDate.ToShortDateString() + " to " + Calendar2.SelectedDate.ToShortDateString();
+        DateTime beginDate = new DateTime();
+        DateTime endDate = new DateTime();
+
+        if (Calendar1.SelectedDate.Month == 1) 
+        {
+            DateTime lM1Date;
+            lM1Date = new DateTime(Calendar2.SelectedDate.Year - 1, 12, 1);
+            beginDate = lM1Date;
+        }
+        else
+
+        {
+            DateTime lM1Date;
+            lM1Date = new DateTime(Calendar2.SelectedDate.Year, Calendar1.SelectedDate.Month - 1, 1);
+            beginDate = lM1Date;
+        }
+
+        if (Calendar2.SelectedDate.Month == 1)
+        {
+            DateTime llMDate;
+            llMDate = new DateTime(Calendar2.SelectedDate.Year - 1, 12, DateTime.DaysInMonth(DateTime.Now.Year - 1, 12));
+            endDate = llMDate;
+        }
+        else
+        {
+            DateTime llMDate;
+            llMDate = new DateTime(Calendar2.SelectedDate.Year, Calendar2.SelectedDate.Month - 1, DateTime.DaysInMonth(Calendar2.SelectedDate.Year, Calendar2.SelectedDate.Month - 1));
+            endDate = llMDate;
+        }
+        
+        Label5.Text = "Range is: " + beginDate.ToShortDateString() + " to " + endDate.ToShortDateString();
     }
 
     protected void Button1_OnClick(object sender, EventArgs e)
     {
+        DateTime beginDate = new DateTime();
+        DateTime endDate = new DateTime();
+
+
+            if (Calendar1.SelectedDate.Month == 1)
+            {
+                DateTime lM1Date;
+                lM1Date = new DateTime(DateTime.Now.Year - 1, 12, 1);
+                beginDate = lM1Date;
+            }
+            else
+
+            {
+                DateTime lM1Date;
+                lM1Date = new DateTime(Calendar1.SelectedDate.Year, Calendar1.SelectedDate.Month - 1, 1);
+                beginDate = lM1Date;
+            }
+
+            if (Calendar2.SelectedDate.Month == 1)
+            {
+                DateTime llMDate;
+                llMDate = new DateTime(DateTime.Now.Year - 1, 12, DateTime.DaysInMonth(DateTime.Now.Year - 1, 12));
+                endDate = llMDate;
+            }
+            else
+            {
+                DateTime llMDate;
+                llMDate = new DateTime(Calendar2.SelectedDate.Year, Calendar2.SelectedDate.Month - 1, DateTime.DaysInMonth(Calendar2.SelectedDate.Year, Calendar2.SelectedDate.Month - 1));
+                endDate = llMDate;
+            }
+
+        Label5.Text = "Range is: " + beginDate.ToShortDateString() + " to " + endDate.ToShortDateString();
+
+
         //Uses DataClassesDataContext from LinqToSql to obtain connection to data from the database
         DataClassesDataContext dtContext = new DataClassesDataContext();
-
-        var beginDate = Convert.ToDateTime(Calendar1.SelectedDate.ToShortDateString());
-        var endDate = Convert.ToDateTime(Calendar2.SelectedDate.ToShortDateString());
 
         //LinqToSql query to grab data from the first 15 records
         var query = (from viewApex in dtContext.viewApexes
